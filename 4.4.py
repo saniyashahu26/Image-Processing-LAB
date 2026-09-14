@@ -1,0 +1,15 @@
+import cv2
+import matplotlib.pyplot as plt
+image = cv2.imread('gull-7539615_1280.jpg')
+plt.subplot(1, 2, 1)
+plt.title("Original")
+plt.imshow(cv2.cvtColor(image, cv2.COLOR_BGR2RGB))
+plt.axis('off')
+sharpened_image2 = cv2.Laplacian(image, cv2.CV_64F)
+sharpened_image2 = cv2.convertScaleAbs(sharpened_image2)
+cv2.imwrite('Laplacian_sharpened_image.jpg', sharpened_image2)
+plt.subplot(1, 2, 2)
+plt.title("Laplacian Sharpening")
+plt.imshow(cv2.cvtColor(sharpened_image2, cv2.COLOR_BGR2RGB))
+plt.axis('off')
+plt.show()
